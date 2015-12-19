@@ -1,3 +1,4 @@
+"use strict"
 
 angular.module('efterfestApp')
     .controller('AccountCtrl', function ($scope, user, simpleLogin, fbutil, $timeout, $rootScope, $routeParams, $location) {

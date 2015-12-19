@@ -1,4 +1,4 @@
-
+'use strict'
 angular.module('efterfestApp')
     .controller('InsertAdCtrl', function ($scope, fbutil, user, $timeout, $routeParams, $location, $modal, $rootScope) {
 
