@@ -1,0 +1,60 @@
+
+<div class="row">
+  <div class="col-xs-12">
+    <p>
+      <a class="btn btn-default" href="#/">Tillbaka</a>
+    </p>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-7">
+
+        <div class="form-group">
+            <label>Beskriv din efterfest</label>
+            <textarea class="form-control" rows="3" ng-model="ad.description"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Hur hittar man hit? <span class="text-muted">(syns bara vid accepterad förfågan)</span></label>
+          <textarea class="form-control" rows="3" ng-model="ad.directions"></textarea>
+        </div>
+
+        <label>En bild</label>
+        <div ng-show="ad.image">
+          <img style="width: 100%;" class="img-thumbnail" ng-src="{{ad.image.link}}"/>
+          <button style="margin-top: 20px; float: right;" class="btn btn-danger" ng-click="removeImage()">Ta bort bild</button>
+        </div>
+
+
+        <form ng-show="!ad.image" class="form-group" ng-submit="uploadImage($event)">
+            <input class="form-control" id="imageInput" name="image" type="file"/>
+            <button style="margin-top: 10px;" ng-disabled="uploadingImage" class="btn btn-default" type="submit">
+                <span ng-if="!uploadingImage">Ladda upp bild</span>
+                <span ng-if="uploadingImage">Laddar upp...</span>
+            </button>
+        </form>
+
+
+    </div>
+
+    <div class="col-sm-5">
+        <label>Välj område</label>
+
+        <ui-gmap-google-map draggable="true" center='ad.coords' zoom='map.zoom'>
+
+            <ui-gmap-marker coords="ad.coords" options="marker.options" events="marker.events" idkey="5">
+            </ui-gmap-marker>
+
+        </ui-gmap-google-map>
+    </div>
+</div>
+
+
+<div style="margin-top: 20px;">
+    <button class="btn btn-primary" ng-click="save()">
+        <span ng-show="!isEditing()">Publicera</span>
+        <span ng-show="isEditing()">Uppdatera</span>
+    </button>
+    <button class="btn btn-danger" ng-show="isEditing()" ng-click="delete()">Ta bort</button>
+</div>
