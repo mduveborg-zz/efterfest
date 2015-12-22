@@ -31,14 +31,14 @@ angular.module('efterfestApp')
       $scope.myRequests.$add($scope.request).then(function(request){
           $scope.sentRequest = $scope.myRequests.$getRecord(request.key());
 
-          var partyCreatorRef = fbutil.syncObject("users/" + $scope.party.creator + "/receivedrequests/" + request.key()).$loaded().then(function() {
-            partyCreatorRef.$value = request.key();
-            partyCreatorRef.$save();
+          fbutil.syncObject("users/" + $scope.party.creator + "/receivedrequests/" + request.key()).$loaded().then(function(obj) {
+            obj.$value = true;
+            obj.$save();
           });
 
-          var requestCreatorRef = fbutil.syncObject("users/" + $scope.user.uid + "/receivedrequests/" + request.key()).$loaded().then(function() {
-            requestCreatorRef.$value = request.key();
-            requestCreatorRef.$save();
+          fbutil.syncObject("users/" + $scope.user.uid + "/sentrequests/" + request.key()).$loaded().then(function(obj) {
+            obj.$value = true;
+            obj.$save();
           });
 
         },

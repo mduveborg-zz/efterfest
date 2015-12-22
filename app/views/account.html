@@ -44,10 +44,11 @@
         <img style="width: 200px;" ng-src="{{request.image.link}}">
       </div>
       <div class="media-body">
-        <p class="badge badge-success" ng-show="request.approved">Godkänd!</p>
-        <p class="badge badge-success" ng-show="!request.approved">Ej godkänd</p>
+        <p class="text-success" ng-show="request.approved">Godkänd!</p>
+        <p class="text-info" ng-show="!request.approved">Väntar på godkännande</p>
         <h4 class="media-heading">{{request.message}}</h4>
-        <a href="#/efterfest/{{request.partyId}}">Visa fest</a>
+
+        <p><a href="#/efterfest/{{request.partyId}}">Visa fest</a></p>
 
         <button ng-click="remove(request.$id)" class="btn btn-danger">Ta bort förfrågan</button>
       </div>

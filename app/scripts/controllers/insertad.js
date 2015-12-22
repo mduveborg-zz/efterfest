@@ -65,6 +65,7 @@ angular.module('efterfestApp')
             }
         }
 
+
         $scope.save = function() {
           if(existingId) {
             $scope.ad.$save();

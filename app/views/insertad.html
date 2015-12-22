@@ -20,7 +20,7 @@
           <textarea class="form-control" rows="3" ng-model="ad.directions"></textarea>
         </div>
 
-        <label>En bild</label>
+        <label>Välj bild</label>
         <div ng-show="ad.image">
           <img style="width: 100%;" class="img-thumbnail" ng-src="{{ad.image.link}}"/>
           <button style="margin-top: 20px; float: right;" class="btn btn-danger" ng-click="removeImage()">Ta bort bild</button>
@@ -30,7 +30,7 @@
         <form ng-show="!ad.image" class="form-group" ng-submit="uploadImage($event)">
             <input class="form-control" id="imageInput" name="image" type="file"/>
             <button style="margin-top: 10px;" ng-disabled="uploadingImage" class="btn btn-default" type="submit">
-                <span ng-if="!uploadingImage">Ladda upp bild</span>
+                <span ng-if="!uploadingImage">Ladda upp</span>
                 <span ng-if="uploadingImage">Laddar upp...</span>
             </button>
         </form>
@@ -52,9 +52,9 @@
 
 
 <div style="margin-top: 20px;">
-    <button class="btn btn-primary" ng-click="save()">
-        <span ng-show="!isEditing()">Publicera</span>
-        <span ng-show="isEditing()">Uppdatera</span>
+    <button class="btn btn-primary btn-lg" ng-click="save()">
+        <span ng-show="!isEditing()">Publicera efterfest</span>
+        <span ng-show="isEditing()">Spara ändringar</span>
     </button>
-    <button class="btn btn-danger" ng-show="isEditing()" ng-click="delete()">Ta bort</button>
+    <button class="btn btn-danger btn-lg" ng-show="isEditing()" ng-click="delete()">Ta bort efterfest</button>
 </div>

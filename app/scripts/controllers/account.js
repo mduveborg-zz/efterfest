@@ -1,7 +1,7 @@
 "use strict"
 
 angular.module('efterfestApp')
-    .controller('AccountCtrl', function ($scope, user, simpleLogin, fbutil, $timeout, $rootScope, $routeParams, $location) {
+    .controller('AccountCtrl', function ($scope, user, simpleLogin, fbutil, $timeout, $rootScope, $routeParams, $location, $firebase) {
 
         $scope.tab = $routeParams.tab || "efterfester";
 
@@ -24,12 +24,20 @@ angular.module('efterfestApp')
             profile.$bindTo($scope, 'profile');
         }
 
+        $scope.sentRequests = $firebase(
+          new Firebase.util.NormalizedCollection(fbutil.ref("users/" + user.uid + "/sentrequests"),
+            fbutil.ref("requests"))
+            .select("requests.message", "requests.approved", "requests.partyId", "requests.requestCreator", "requests.partyHost")
+            .ref()).$asArray();
 
-        $scope.sentRequests = fbutil.syncArray("requests", {orderByChild: "requestCreator", equalTo: user.uid})
 
-        $scope.receivedRequests = fbutil.syncArray("requests", {orderByChild: "partyHost", equalTo: user.uid})
+        $scope.receivedRequests = $firebase(
+          new Firebase.util.NormalizedCollection(fbutil.ref("users/" + user.uid + "/receivedrequests"),
+            fbutil.ref("requests"))
+            .select("requests.message", "requests.approved", "requests.partyId", "requests.requestCreator", "requests.partyHost")
+            .ref()).$asArray();
 
-        $scope.myParties = fbutil.syncArray("parties", {orderByChild: "creator", equalTo: user.uid})
+        $scope.myParties = fbutil.syncArray("parties", {orderByChild: "creator", equalTo: user.uid});
 
         $scope.approve = function(request, approved) {
           request.approved = approved;
