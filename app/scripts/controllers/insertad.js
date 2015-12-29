@@ -19,6 +19,18 @@ angular.module('efterfestApp')
                     longitude: 15
                 }
             };
+
+
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position){
+              $scope.ad.coords = {
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude
+              };
+              $scope.map.zoom = 8;
+              $scope.$digest();
+            });
+          }
         }
 
         $scope.uploadImage = function(event) {

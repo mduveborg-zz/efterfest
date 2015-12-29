@@ -24,7 +24,7 @@
     <h3>Dina efterfester</h3>
     <div class="media" ng-repeat="party in myParties">
       <div class="pull-left" href="#">
-        <img style="width: 200px;" ng-src="{{party.image.link}}" alt="...">
+        <img style="width: 200px;" ng-src="{{party.image.link || 'http://www.insite.io/browser/home/accounts/assets/images/no-profile-image.jpg'}}" alt="...">
       </div>
       <div class="media-body">
         <h4 class="media-heading">{{party.description}}</h4>
@@ -41,7 +41,7 @@
     <h3>Skickade förfrågningar</h3>
     <div class="media" ng-repeat="request in sentRequests">
       <div class="pull-left" href="#">
-        <img style="width: 200px;" ng-src="{{request.image.link}}">
+        <img style="width: 200px;" ng-src="{{request.image.link || 'http://www.insite.io/browser/home/accounts/assets/images/no-profile-image.jpg'}}">
       </div>
       <div class="media-body">
         <p class="text-success" ng-show="request.approved">Godkänd!</p>
@@ -63,13 +63,13 @@
     <h3>Mottagna förfrågningar</h3>
     <div class="media" ng-repeat="request in receivedRequests">
       <div class="pull-left" href="#">
-        <img style="width: 200px;" ng-src="{{request.image.link}}">
+        <img style="width: 200px;" ng-src="{{request.image.link || 'http://www.insite.io/browser/home/accounts/assets/images/no-profile-image.jpg'}}">
       </div>
       <div class="media-body">
         <h4 class="media-heading">{{request.message}}</h4>
-        <a href="#/efterfest/{{request.partyId}}">Visa fest</a>
-        <button ng-show="!request.approved" ng-click="approve(request, true)" class="btn btn-success">Acceptera</button>
-        <button ng-show="request.approved" ng-click="approve(request, false)" class="btn btn-danger">Ta bort acceptering</button>
+        <p><a href="#/efterfest/{{request.partyId}}">Visa fest</a></p>
+        <button ng-show="!request.approved" ng-click="approve(request, true)" class="btn btn-default">Ej godkänd</button>
+        <button ng-show="request.approved" ng-click="approve(request, false)" class="btn btn-success active">Godkänd!</button>
       </div>
     </div>
   </div>

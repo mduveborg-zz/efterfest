@@ -5,6 +5,11 @@ angular.module('efterfestApp')
 
     $scope.map = { center: { latitude: 62, longitude: 15 }, zoom: 8 };
     $scope.party = fbutil.syncObject("parties/" + $routeParams.id);
+    $scope.party.$loaded().then(function() {
+      $scope.creatorProfile = fbutil.syncObject('users/' + $scope.party.creator);
+    })
+
+
     $scope.user = simpleLogin.getUser();
 
 
