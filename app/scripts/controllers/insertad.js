@@ -81,9 +81,10 @@ angular.module('efterfestApp')
         $scope.save = function() {
           if(existingId) {
             $scope.ad.$save();
+            $location.path("/efterfest/" + $scope.ad.$id);
           } else {
             fbutil.syncArray("parties").$add($scope.ad).then(function(ad){
-                $location.path("/redigera/" + ad.key());
+                $location.path("/efterfest/" + ad.key());
               },
               function(error) {});
           }
