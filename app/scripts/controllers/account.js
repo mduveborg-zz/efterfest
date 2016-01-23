@@ -44,5 +44,8 @@ angular.module('efterfestApp')
           $scope.receivedRequests.$save(request);
         }
 
+        $scope.remove = function(request){
+          $scope.sentRequests.$remove(request);
+        }
 
     });
