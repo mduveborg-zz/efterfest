@@ -28,11 +28,14 @@
       </div>
       <div class="media-body">
         <h4 class="media-heading">{{party.description}}</h4>
-
         <a href="#/efterfest/{{party.$id}}">Visa</a>
 
       </div>
     </div>
+
+  </div>
+  <div class="col-xs-4">
+  <button  class="btn btn-primary btn-lg btn-block logout" ng-click="logout();">Logga ut</button>
   </div>
 </div>
 
@@ -44,13 +47,13 @@
         <img style="width: 200px;" ng-src="{{request.image.link || 'http://www.insite.io/browser/home/accounts/assets/images/no-profile-image.jpg'}}">
       </div>
       <div class="media-body">
-        <p class="text-success" ng-show="request.approved">Godkänd!</p>
+        <p class="text-success accepted" ng-show="request.approved">Godkänd!</p>
         <p class="text-info" ng-show="!request.approved">Väntar på godkännande</p>
         <h4 class="media-heading">{{request.message}}</h4>
 
         <p><a href="#/efterfest/{{request.partyId}}">Visa fest</a></p>
 
-        <button ng-click="remove(request.$id)" class="btn btn-danger">Ta bort förfrågan</button>
+        <button ng-click="remove(request)" class="btn btn-danger">Ta bort förfrågan</button>
       </div>
     </div>
   </div>
@@ -74,4 +77,3 @@
     </div>
   </div>
 </div>
-
