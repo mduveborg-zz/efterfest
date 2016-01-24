@@ -42,6 +42,17 @@ angular.module('efterfestApp')
         $scope.approve = function(request, approved) {
           request.approved = approved;
           $scope.receivedRequests.$save(request);
+
+          var party = _.find($scope.myParties, {$id: request.partyId});
+          if (!party.approvedUsers) party.approvedUsers = [];
+
+          if (approved) {
+            party.approvedUsers.push(request.requestCreator);
+          } else {
+            party.approvedUsers = _.without(party.approvedUsers, request.requestCreator);
+          }
+
+          $scope.myParties.$save(party);
         }
 
         $scope.remove = function(request){

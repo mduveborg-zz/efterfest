@@ -11,7 +11,7 @@ angular.module('efterfestApp')
 
     $scope.myRequests = fbutil.syncArray("requests")
     $scope.myRequests.$loaded().then(function() {
-      $scope.sentRequest =  _.find($scope.myRequests, {partyId: $scope.party.$id, requestCreator: $scope.user.uid});
+      $scope.sentRequest = _.find($scope.myRequests, {partyId: $scope.party.$id, requestCreator: $scope.user.uid});
       if (!$scope.sentRequest) {
         $scope.request = {
           partyId: $scope.party.$id,
