@@ -1,4 +1,5 @@
 
+
 <div class="row">
   <div class="col-sm-8">
 
@@ -8,6 +9,9 @@
 
     <label>Beskrivning:</label>
     <p>{{party.description}}</p>
+
+    <label>Kontakt:</label>
+    <p>{{party.contact}}</p>
 
   </div>
 
@@ -25,33 +29,3 @@
 <p>
   <a href="#/redigera/{{party.$id}}" ng-show="party.creator === user.uid">Redigera</a>
 </p>
-
-
-
-
-<h3 ng-show="!sentRequest">Vill du komma? skriv ett meddelande!</h3>
-
-<div ng-show="!user">
-  <button ng-click="login()" class="btn btn-primary btn-block">Logga in med Facebook</button>
-</div>
-
-<div ng-show="user">
-  <div ng-show="sentRequest">
-    <strong>Ditt meddelande:</strong>
-    <p>
-      {{sentRequest.message}}
-    </p>
-    <button ng-click="removeRequest()" class="btn btn-danger btn-xs">Ta bort</button>
-  </div>
-
-
-  <div ng-show="!sentRequest">
-    <div class="form-group">
-      <label>Meddelande</label>
-      <textarea class="form-control" rows="3" ng-model="request.message"></textarea>
-    </div>
-
-    <button style="margin-top: 20px;" class="btn btn-primary" ng-click="saveRequest()">Skicka meddelande</button>
-  </div>
-
-</div>

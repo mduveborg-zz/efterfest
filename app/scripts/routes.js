@@ -58,13 +58,8 @@ angular.module('efterfestApp')
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'views/main.html',
-                controller: 'MainCtrl'
-            })
-
-            .when('/hitta', {
-              templateUrl: 'views/find.html',
-              controller: 'FindCtrl'
+                templateUrl: 'views/find.html',
+                controller: 'FindCtrl'
             })
 
             .when('/loggain', {
@@ -77,7 +72,7 @@ angular.module('efterfestApp')
                 controller: 'ViewAdCtrl'
             })
 
-            .whenAuthenticated('/skapa/', {
+            .whenAuthenticated('/skapa', {
                 templateUrl: 'views/insertad.html',
                 controller: 'InsertAdCtrl'
             })
@@ -87,7 +82,7 @@ angular.module('efterfestApp')
                 controller: 'InsertAdCtrl'
             })
 
-            .whenAuthenticated('/konto/:tab?', {
+            .whenAuthenticated('/dina-efterfester', {
                 templateUrl: 'views/account.html',
                 controller: 'AccountCtrl'
             })

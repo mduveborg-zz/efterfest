@@ -27,7 +27,7 @@ angular.module('efterfestApp')
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude
               };
-              $scope.map.zoom = 8;
+              $scope.map.zoom = 15;
               $scope.$digest();
             });
           }
@@ -76,7 +76,6 @@ angular.module('efterfestApp')
                 })
             }
         }
-
 
         $scope.save = function() {
           if(existingId) {

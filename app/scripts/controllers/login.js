@@ -9,7 +9,7 @@ angular.module('efterfestApp')
     };
 
     function redirect() {
-      $location.path('/konto');
+      $location.path('/dina-efterfester');
     }
 
     function showError(err) {
